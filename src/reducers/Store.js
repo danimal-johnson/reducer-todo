@@ -17,6 +17,8 @@ const appReducer = (state, action) => {
                           completed: false,
                           id: Date.now()}];
     case "COMPLETE":
+      console.log("Completing a task");
+      return state;
       // Find matching node.
       // Mark as complete.
       break;

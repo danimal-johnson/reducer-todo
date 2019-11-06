@@ -35,10 +35,14 @@ export const TodoList = () => {
       </button>
 
       <h2>The List</h2>
-      <ul>
-        {state.map(item => <li>{item.text}</li>)}
-      </ul>
-
+      {state.map(item => ( 
+        <div className={`${item.completed ? 'completed' : ''}`}
+        onClick={() => dispatch({type: 'COMPLETE', payload: ''})}
+        >
+          {item.text}
+      </div> ))
+      }
+      
     </div>
   )
 }
