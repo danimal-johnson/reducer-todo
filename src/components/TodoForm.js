@@ -1,13 +1,9 @@
 import React, { useReducer, useState } from 'react';
 
-import appReducer from '../reducers/appReducer';
+import appReducer from '../reducers/Store';
 // Does this form even need its own file?
 
-export const initialState = {
-  item: 'Learn about reducers',
-  completed: false,
-  id: 3892987589
-}
+
 
 export const TodoForm = () => {
   const [state, dispatch] = useReducer(appReducer, initialState);

@@ -1,19 +1,20 @@
 import React, { createContext, useReducer } from "react"
 
-const StoreContext = createContext({});
+export const StoreContext = createContext({});
 
-const initialState = {
-  item: 'Learn about reducers',
+const initialState = [{
+  text: 'Learn about reducers',
   completed: false,
   id: 3892987589
-}
+}];
 
 const appReducer = (state, action) => {
+  console.log("Payload:", action.payload);
   switch (action.type) {
     case "ADD":
       console.log("Adding a new todo in appReducer");
       const newTodo = {
-        item: action.payload,
+        text: action.payload,
         completed: false,
         id: Date.now()
       }
@@ -23,6 +24,7 @@ const appReducer = (state, action) => {
       // Mark as complete.
       break;
     case "DELETE":
+      console.log("Deleting completed tasks.");
       // Map through list.
       // Delete each node that has been completed.
       break;
