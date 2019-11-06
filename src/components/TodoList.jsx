@@ -4,10 +4,8 @@ import { StoreContext } from '../reducers/Store';
 export const TodoList = () => {
   const [state, dispatch] = useContext(StoreContext);
   const [taskName, setTaskName] = useState("");
-  console.log(state);
 
   const handleInputChange = event => {
-    console.log(event.target.name, event.target.value);
     setTaskName(event.target.value);
   }
   
@@ -37,7 +35,7 @@ export const TodoList = () => {
       <h2>The List</h2>
       {state.map(item => ( 
         <div className={`${item.completed ? 'completed' : ''}`}
-        onClick={() => dispatch({type: 'COMPLETE', payload: ''})}
+        onClick={() => dispatch({type: 'COMPLETE', payload: item.id})}
         >
           {item.text}
       </div> ))

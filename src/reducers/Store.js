@@ -9,21 +9,24 @@ const initialState = [{
 }];
 
 const appReducer = (state, action) => {
-  console.log("Payload:", action.payload);
   switch (action.type) {
     case "ADD":
-      console.log("Adding a new todo in appReducer");
       return [...state, { text: action.payload,
                           completed: false,
                           id: Date.now()}];
     case "COMPLETE":
-      console.log("Completing a task");
-      return state;
       // Find matching node.
-      // Mark as complete.
-      break;
+      let result = state.map(i=>i);
+      for (let item of result) {
+        if (item.id === action.payload) {
+          // Toggle complete status.
+          item.completed = !item.completed;
+        }
+      }
+      
+      return result;
+
     case "DELETE":
-      console.log("Deleting completed tasks.");
       // Filter through list. Only return completed tasks.
       return state.filter(item => item.completed === false );
     default:
