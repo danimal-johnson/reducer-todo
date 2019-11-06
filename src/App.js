@@ -10,7 +10,7 @@ function App() {
   return (
     <Store>
       <div className="App">
-        <h1>This is your new reducer to-do app! Yay!!</h1>
+        <h1>Another to-do app! Yay!!</h1>
         <TodoList />
       </div>
     </Store>

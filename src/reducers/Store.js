@@ -4,7 +4,7 @@ export const StoreContext = createContext({});
 
 const initialState = [{
   text: 'Learn about reducers',
-  completed: false,
+  completed: true,
   id: 3892987589
 }];
 
@@ -13,21 +13,17 @@ const appReducer = (state, action) => {
   switch (action.type) {
     case "ADD":
       console.log("Adding a new todo in appReducer");
-      const newTodo = {
-        text: action.payload,
-        completed: false,
-        id: Date.now()
-      }
-      return [...state, {newTodo}];
+      return [...state, { text: action.payload,
+                          completed: false,
+                          id: Date.now()}];
     case "COMPLETE":
       // Find matching node.
       // Mark as complete.
       break;
     case "DELETE":
       console.log("Deleting completed tasks.");
-      // Map through list.
-      // Delete each node that has been completed.
-      break;
+      // Filter through list. Only return completed tasks.
+      return state.filter(item => item.completed === false );
     default:
       console.error ("Unhandled state in appReducer.");
   }
